@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabibi- <ahabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: salah <salah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 17:09:02 by salhali           #+#    #+#             */
-/*   Updated: 2025/07/24 19:50:17 by ahabibi-         ###   ########.fr       */
+/*   Updated: 2025/07/25 21:27:57 by salah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int is_builtin(t_cmd *cmd)
 
 int execute_builtin(t_cmd *cmd, t_shell *shell)
 {
-    printf("Executing builtin command: %s\n", cmd->cmd);
     if (ft_strcmp("echo", cmd->cmd) == 0)
         return (builtin_echo(cmd));
     else if (ft_strcmp("cd", cmd->cmd) == 0)

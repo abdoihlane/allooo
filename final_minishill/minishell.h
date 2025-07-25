@@ -167,11 +167,11 @@ void						reparse_variable(t_pars *pars);
 // ------ EXECUTION FUNCTIONS --------  //
 
 //                  Main builtin functions
-int             builtin_cd(t_cmd *cmd, t_shell *shell);       // Change directory
-void            update_pwd_variables(t_shell *shell, char *old_pwd);
-int             handle_cd_error(char *path);
-char            *get_target_path(t_cmd *cmd, t_shell *shell, char *current_dir);
-int             get_array_length(char **array);
+int             		builtin_cd(t_cmd *cmd, t_shell *shell);       // Change directory
+void            		update_pwd_variables(t_shell *shell, char *old_pwd);
+int             		handle_cd_error(char *path);
+char            		*get_target_path(t_cmd *cmd, t_shell *shell, char *current_dir);
+int             		get_array_length(char **array);
 int                 is_builtin(t_cmd *command);
 int                 execute_builtin(t_cmd *cmd, t_shell *shell);  // CORRECTED: t_cmd instead of t_command
 //                  Individual builtin implementations
@@ -199,9 +199,9 @@ void                update_env_list(t_shell *shell, const char *key, const char 
 int                 ft_strcmp_echo(const char *s);
 char                **function_split_env(t_shell *shell);
 void                add_env_node(t_env **head, t_env *new);
-char	            *find_path(char *cmd, char **envp);
-void	            ft_free(char **str);
-void	            execute(char *cmd, char **env);
+char	            	*find_path(char *cmd, char **envp);
+void	            	ft_free(char **str);
+void	            	execute(char *cmd, char **env);
 void                free_env(char **env); //check env is free or not
 void                setup_redirections(t_cmd *cmd);
 void                execute_cmds(t_cmd *clist, t_shell *shell);

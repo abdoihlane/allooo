@@ -59,6 +59,15 @@ void execute_cmds(t_cmd *clist, t_shell *shell)
 
     while (clist)
     {
+        // Handle builtins that must run in parent process (no pipes)
+        if (is_builtin(clist) && !clist->next && in_fd == 0)
+        {
+            setup_redirections(clist);
+            shell->last_exit_status = execute_builtin(clist, shell);
+            clist = clist->next;
+            continue;
+        }
+
         if (clist->next)
             pipe(pipe_fd);
 
@@ -80,7 +89,6 @@ void execute_cmds(t_cmd *clist, t_shell *shell)
             setup_redirections(clist);
             if (is_builtin(clist))
             {
-                printf("Executing builtin command: %s\n", clist->cmd);
                 exit(execute_builtin(clist, shell));
             }
             cmd_path = find_path(clist->array[0], envp);

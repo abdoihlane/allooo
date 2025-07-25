@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabibi- <ahabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: salah <salah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 02:46:06 by ahabibi-          #+#    #+#             */
-/*   Updated: 2025/07/24 19:54:57 by ahabibi-         ###   ########.fr       */
+/*   Updated: 2025/07/25 21:15:36 by salah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,13 @@ int	hardcodechecks(char *str)
 int	red_check(char *str)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	while (str && i && str[i] <= 32)
-		i--;
-	if (str[0] == '|' || str[i] == '|')
+	len = ft_strlen(str) - 1;
+	while (str && str[i] && str[i] <= 32)
+		i++;
+	if (str[i] == '|' || str[len] == '|')
 		return (0);
 	i = 0;
 	while (str[i])

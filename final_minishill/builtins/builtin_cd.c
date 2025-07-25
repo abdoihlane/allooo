@@ -6,7 +6,7 @@
 /*   By: salah <salah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 19:45:22 by salhali           #+#    #+#             */
-/*   Updated: 2025/07/25 20:02:17 by salah            ###   ########.fr       */
+/*   Updated: 2025/07/25 21:27:57 by salah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,12 @@ int builtin_cd(t_cmd *cmd, t_shell *shell)
 		len++;
 	if (len <= 2)
 	{
-		if (cmd->array[1] && cmd->qflag == 1)
-			path = getcwd(current_dir, 1024);
-		else
-			path = get_cd_path(cmd, shell);
+		path = get_cd_path(cmd, shell);
 		return (handle_cd_change(path, current_dir, shell));
 	}
 	else
 	{
-		ft_putstr_fd("cd: ", 2);
-		ft_putstr_fd(" too many arguments\n", 2);
+		ft_putstr_fd("cd: too many arguments\n", 2);
 		return (1);
 	}
 }
