@@ -214,5 +214,7 @@ char                *ft_strjoin_triple(char *a, char *b, char *c);
 int                 is_valid_var(const char *str);
 void                sigint_handler(int sig);
 void                sigint_heredoc(int sig);
+int	handle_cd_change(char *path, char *current_dir, t_shell *shell);
+char	*get_cd_path(t_cmd *cmd, t_shell *shell);
 #endif
 
