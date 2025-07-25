@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabibi- <ahabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: salah <salah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 02:46:06 by ahabibi-          #+#    #+#             */
-/*   Updated: 2025/07/24 20:48:05 by ahabibi-         ###   ########.fr       */
+/*   Updated: 2025/07/25 23:02:53 by salah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,26 @@ int check_plus(char *sa)
 {
 	int i;
 	int j;
-	i =0;
+	i = 0;
 	while(sa[i])
+	{
+		if(is_redirection(sa[i]))
 		{
-			if(is_redirection(sa[i]))
-				{
-					j = i;
-					while(is_whitespace(sa[j]))
-						j++;
-					if(is_redirection(sa[j]))
-						return 0;
-				}
-			i++;
+			if ((sa[i] == '<' && sa[i + 1] == '<') ||
+				(sa[i] == '>' && sa[i + 1] == '>'))
+			{
+				i += 2;
+				continue;
+			}
+			j = i + 1;
+			while(is_whitespace(sa[j]))
+				j++;
+			if(is_redirection(sa[j]))
+				return 0;
 		}
-		return 1;
+		i++;
+	}
+	return 1;
 }
 
 int	hardcodechecks(char *str)
